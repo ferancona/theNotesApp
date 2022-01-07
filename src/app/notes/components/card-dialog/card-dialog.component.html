@@ -1,0 +1,47 @@
+<!-- <div fxLayout="column"
+    fxLayoutAlign="center">
+
+  <div mat-dialog-content>
+  <div fxFlex="20rem"
+      fxFlex.lg="15"
+      fxFlex.sm="30">
+    <app-notes-card></app-notes-card>
+  </div>
+
+  </div>
+
+</div> -->
+
+<!--
+<div mat-dialog-content
+    fxLayout="column"
+    fxLayoutAlign="center">
+
+  <div fxFlex="initial">
+    <app-notes-card></app-notes-card>
+  </div>
+
+</div> -->
+
+
+<div mat-dialog-content>
+
+  <div fxLayout="column"
+      fxLayoutAlign="center">
+
+    <div fxFlex="auto">
+      <app-notes-card [note]="data"></app-notes-card>
+      <!-- <app-notes-card [note]="{
+        id: data.hasOwnProperty('id') ? data.id : '' ,
+        ownerId: data.ownerId,
+        title: data.title,
+        body: data.body,
+        attachments: data.attachments,
+        color: data.color,
+        type: data.type
+      }"></app-notes-card> -->
+    </div>
+
+  </div>
+
+</div>

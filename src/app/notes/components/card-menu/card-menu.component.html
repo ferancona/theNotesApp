@@ -1,0 +1,76 @@
+<!-- <p>card-menu works!</p> -->
+
+<!-- <div fxLayout="row"
+  fxLayout.xs="column"
+  fxLayoutAlign="center"
+  fxLayoutGap="20px"
+  > -->
+<div fxLayout="row"
+  fxLayoutAlign="space-between space-around"
+  >
+
+  <div fxFlex="33"
+    fxFlex.lg="15"
+    fxFlex.sm="30">
+
+    <button mat-button>Color</button>
+
+  </div>
+
+  <div fxFlex="33"
+    fxFlex.lg="15"
+    fxFlex.sm="30">
+
+    <button mat-button>Format</button>
+
+  </div>
+
+  <!-- <div fxFlex="33"
+    fxFlex.lg="15"
+    fxFlex.sm="30">
+
+    <mat-form-field appearance="outline" [style.width.%]=100 [style.height.%]=50>
+      <mat-select value="option1">
+        <mat-option value="option1">Text</mat-option>
+        <mat-option value="option2">Checkbox</mat-option>
+        <mat-option value="option3">Ordered</mat-option>
+        <mat-option value="option4">Unordered</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div> -->
+
+
+  <div fxFlex="33"
+    fxFlex.lg="15"
+    fxFlex.sm="30">
+
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>file_copy</mat-icon>
+        <span>Duplicate</span>
+      </button>
+      <button mat-menu-item disabled>
+        <mat-icon>attach_file</mat-icon>
+        <span>Attach</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>share</mat-icon>
+        <span>Share</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>delete</mat-icon>
+        <span>Delete</span>
+      </button>
+    </mat-menu>
+
+  </div>
+
+
+
+
+</div>
+

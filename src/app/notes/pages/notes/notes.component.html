@@ -1,0 +1,28 @@
+<p>notes works!</p>
+<mat-divider></mat-divider>
+
+<div fxLayout="row"
+    fxLayoutAlign="center center"
+    style="padding: 5px;">
+    <app-add-note></app-add-note>
+</div>
+
+
+<div fxLayout="row"
+  fxLayout.xs="column"
+  fxLayoutAlign="center"
+  fxLayoutGap="20px" >
+
+  <div fxFlex="20"
+    fxFlex.lg="15"
+    fxFlex.sm="30"
+    *ngFor="let note of notes">
+
+    <app-card-container
+      [note]="note"
+      (click)="openDialog(note)">
+    </app-card-container>
+
+  </div>
+
+</div>

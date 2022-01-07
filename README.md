@@ -1,3 +1,47 @@
+
+# Documentation
+
+There are 4 types of notes:
+- Plain text
+- Ordered list
+- Unordered list
+- Checkboxes
+
+
+Questions to answer for implementation:
+- Will cards be of a set of defined colors?
+  - If so, which ones?
+
+# TODO (Priority)
+
+Simple
+- Add min width and height to a notes-card component
+
+- How to use user data?
+
+<!-- Do this one after Forms course?? -->
+- Component: Editable card (title and content)
+  - Modify title
+  - Modify text body
+
+- RouteGuards (Sign In)
+
+
+Card Menu - Functionalities
+- Color (change) -> needs a Dialog showing possible colours 
+- Format (change) -> needs a Dialog showing possible formats (text, checkbox)
+- Duplicate Note -> function that creates a copy of a note in db
+- Attach File -> something like "Share Note" but with files, maybe same component! (We can add/remove... can we open?)
+- Share Note -> needs dialog box showing the list of emails with which the list has been shared
+- Delete Note -> needs dialog asking are you sure 
+
+
+
+
+- Use ExpansionPanel for file attachments and maybe the list of users who the card is shared with.
+
+
+
 # TheNotesApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
