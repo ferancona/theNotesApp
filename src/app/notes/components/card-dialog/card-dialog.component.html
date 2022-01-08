@@ -1,47 +1,65 @@
-<!-- <div fxLayout="column"
-    fxLayoutAlign="center">
 
-  <div mat-dialog-content>
-  <div fxFlex="20rem"
-      fxFlex.lg="15"
-      fxFlex.sm="30">
-    <app-notes-card></app-notes-card>
-  </div>
-
-  </div>
-
-</div> -->
-
-<!--
-<div mat-dialog-content
-    fxLayout="column"
-    fxLayoutAlign="center">
-
-  <div fxFlex="initial">
-    <app-notes-card></app-notes-card>
-  </div>
-
-</div> -->
-
-
-<div mat-dialog-content>
-
-  <div fxLayout="column"
-      fxLayoutAlign="center">
-
-    <div fxFlex="auto">
-      <app-notes-card [note]="data"></app-notes-card>
-      <!-- <app-notes-card [note]="{
-        id: data.hasOwnProperty('id') ? data.id : '' ,
-        ownerId: data.ownerId,
-        title: data.title,
-        body: data.body,
-        attachments: data.attachments,
-        color: data.color,
-        type: data.type
-      }"></app-notes-card> -->
+<div fxLayout="row"
+  fxLayoutAlign="space-between center"
+  color="primary"
+  style="margin: 0;">
+  <div>
+    <div *ngIf="!data.shared">
+      {{ (data.newNote) ? 'New' : 'Edit' }} Note
     </div>
-
   </div>
+  <div>
+    <button mat-icon-button mat-dialog-close >
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</div>
+
+
+
+<div fxLayout="column"
+    fxLayoutAlign="center"
+    fxLayoutGap="0px">
+
+  <div fxFlex="auto">
+    <!-- <app-notes-card *ngIf="!data.newNote"
+      [note]="data.note"
+      [showMenu]="false"></app-notes-card> -->
+
+    <app-notes-card-editable [note]="data.note"></app-notes-card-editable>
+
+    <!-- <mat-dialog-actions>
+      <button mat-button mat-dialog-close>Close</button>
+    </mat-dialog-actions> -->
+  </div>
+
+  <div fxLayout="row" fxFlexAlign="end" *ngIf="data.newNote" >
+    <mat-dialog-actions>
+      <button mat-raised-button
+        mat-dialog-close
+        (click)="create()"
+        color="accent"
+      >Create</button>
+    </mat-dialog-actions>
+  </div>
+  <!-- <div fxLayout="row" fxFlexAlign="end" *ngIf="data.newNote" >
+    <mat-dialog-actions>
+      <button mat-raised-button
+        mat-dialog-close
+        (click)="create()"
+        color="accent"
+      >Create</button>
+    </mat-dialog-actions>
+  </div> -->
+  <!-- <div fxLayout="row" fxFlexAlign="center" >
+    <mat-dialog-actions>
+      <button mat-raised-button
+        mat-dialog-close
+        (click)="create()"
+        [color]="(data.newNote) ? 'accent' : 'basic'"
+      >{{ (data.newNote) ? 'Create' : 'Close'}}</button>
+    </mat-dialog-actions>
+  </div> -->
 
 </div>
+

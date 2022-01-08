@@ -1,0 +1,26 @@
+{{ (data.newNote) ? 'New' : 'Edit' }} Note
+
+<div fxLayout="column"
+    fxLayoutAlign="center">
+
+  <div fxFlex="auto">
+    <!-- <app-notes-card *ngIf="!data.newNote"
+      [note]="data.note"
+      [showMenu]="false"></app-notes-card> -->
+
+    <app-notes-card-editable [note]="data.note"></app-notes-card-editable>
+
+    <!-- <mat-dialog-actions>
+      <button mat-button mat-dialog-close>Close</button>
+    </mat-dialog-actions> -->
+  </div>
+
+  <div fxLayout="row" fxFlexAlign="end">
+    <mat-dialog-actions>
+      <button mat-raised-button mat-dialog-close  >Create</button>
+    </mat-dialog-actions>
+  </div>
+
+
+</div>
+

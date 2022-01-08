@@ -1,27 +1,38 @@
-<p>notes works!</p>
-<mat-divider></mat-divider>
+<!-- <p>notes works!</p>
+<mat-divider></mat-divider> -->
 
 <div fxLayout="row"
-    fxLayoutAlign="center center"
+    fxLayoutAlign="center"
     style="padding: 5px;">
-    <app-add-note></app-add-note>
+    <app-add-note class="animate__animated animate__fadeIn"></app-add-note>
 </div>
 
 
 <div fxLayout="row"
   fxLayout.xs="column"
+  fxLayoutAlign.xs="center center"
   fxLayoutAlign="center"
-  fxLayoutGap="20px" >
+  fxLayoutGap="10px"
+  >
+  <!-- fxLayoutGap="10px"  -->
 
-  <div fxFlex="20"
+  <div fxFlex="40"
+    *ngFor="let note of notes"
+    class="animate__animated animate__fadeIn">
+  <!-- <div fxFlex="20"
     fxFlex.lg="15"
     fxFlex.sm="30"
-    *ngFor="let note of notes">
+    *ngFor="let note of notes"> -->
 
-    <app-card-container
+    <!-- <app-card-container
       [note]="note"
       (click)="openDialog(note)">
-    </app-card-container>
+    </app-card-container> -->
+    <app-notes-card
+      [note]="note"
+      [shared]="false"
+      (onEditableClick)="openDialog(note)">
+    </app-notes-card>
 
   </div>
 
