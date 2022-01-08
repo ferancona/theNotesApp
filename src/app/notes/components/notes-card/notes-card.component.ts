@@ -1,5 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Note, NoteContentType } from '../../interfaces/notes.interface';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Note, NoteContentType, createEmptyNote } from '../../interfaces/notes.interface';
+import { NotesService } from '../../services/notes.service';
+import { AuthService } from '../../../auth/auth.service';
 
 @Component({
   selector: 'app-notes-card',
@@ -8,25 +10,62 @@ import { Note, NoteContentType } from '../../interfaces/notes.interface';
     mat-card {
       margin-top: 20px;
       /* width: 200px; */
+      max-width: 200px;
+      min-width: 200px;
     }
   `
   ]
 })
 export class NotesCardComponent implements OnInit {
 
-  @Input() note: Note = {
-    id: '',
-    ownerId: '',
-    title: "My first note!",
-    body: "I remember when I saw this dog... best day ever!",
-    attachments: [],
-    color: "",
-    type: NoteContentType.PlainText
-  };
+  @Output() onEditableClick: EventEmitter<void> = new EventEmitter();
 
-  constructor() { }
+  @Input() note: Note = createEmptyNote();
+  @Input() showMenu: boolean = true;
+  @Input() shared: boolean = false;
+
+  constructor( private notesService: NotesService,
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  duplicate() {
+    this.authService.getLoggedUser()
+      .subscribe( socialUser => {
+        const newNote = {
+          id: '',
+          ownerId: socialUser.email,
+          title: this.note.title,
+          body: this.note.body,
+          attachments: this.note.attachments,
+          color: this.note.color,
+          type: this.note.type
+        }
+        this.notesService.createNote(newNote);
+      });
+    // Need to refresh screen.
+  }
+
+  attachFile() {
+    // TODO: need to get the file input!
+    this.notesService.updateNote(this.note.id, this.note);
+  }
+
+  share() {
+    // TODO.
+    // Display a dialog to manage all the sharing!
+    // this.notesService.shareNote(this.note.id)
+  }
+
+  delete() {
+    this.notesService.deleteNote(this.note.id);
+    // Need to refresh screen.
+  }
+
+  editableClicked(){
+    this.onEditableClick.emit();
   }
 
 }

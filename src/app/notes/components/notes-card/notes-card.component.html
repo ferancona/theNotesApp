@@ -1,27 +1,26 @@
 
 <mat-card class="imgs" >
 
-  <!-- <mat-card-header color="primary">
-    <div mat-card-avatar></div>
-    <mat-card-title>My First Note!</mat-card-title>
-    <mat-card-subtitle> <span>&#60;</span> date <span>&#62;</span> </mat-card-subtitle>
-  </mat-card-header> -->
+  <div (click)="editableClicked()" >
+    <mat-card-title>{{ note.title }}</mat-card-title>
+    <mat-divider [inset]="true" ></mat-divider>
 
-  <mat-card-title>{{ note.title }}</mat-card-title>
-  <mat-divider [inset]="true" ></mat-divider>
+    <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
 
-  <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+    <mat-card-content>
+      <app-card-content [body]="note.body" ></app-card-content>
+    </mat-card-content>
+  </div>
 
-  <mat-card-content>
-    <app-card-content [body]="note.body" ></app-card-content>
-  </mat-card-content>
-
-  <mat-card-actions>
-    <!-- <button mat-button>Color</button>
-    <button mat-button>SHARE</button> -->
-    <app-card-menu></app-card-menu>
+  <mat-card-actions *ngIf="showMenu">
+    <app-card-menu
+      [shared]="shared"
+      (onDuplicate)="duplicate()"
+      (onAttach)="attachFile()"
+      (onShare)="share()"
+      (onDelete)="delete()">
+    </app-card-menu>
   </mat-card-actions>
-
 
 </mat-card>
 
