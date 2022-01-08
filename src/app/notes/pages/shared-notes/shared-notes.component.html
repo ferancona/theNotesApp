@@ -1,0 +1,26 @@
+
+<div fxLayout="row"
+  fxLayout.xs="column"
+  fxLayoutAlign.xs="center center"
+  fxLayoutAlign="center"
+  fxLayoutGap="10px"
+  >
+
+  <div fxFlex="40"
+    *ngFor="let note of notes"
+    class="animate__animated animate__fadeIn">
+  <!-- <div fxFlex="20"
+    fxFlex.lg="15"
+    fxFlex.sm="30"
+    *ngFor="let note of notes"> -->
+
+    <app-notes-card
+      [note]="note"
+      [shared]="true"
+      (onEditableClick)="openDialog(note)"
+      >
+    </app-notes-card>
+
+  </div>
+
+</div>

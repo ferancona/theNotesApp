@@ -15,8 +15,9 @@ import { CardDialogComponent } from './components/card-dialog/card-dialog.compon
 import { NotesCardEditableComponent } from './components/notes-card-editable/notes-card-editable.component';
 import { AuthModule } from '../auth/auth.module';
 import { CardContainerComponent } from './components/card-container/card-container.component';
-import { CardContainerMenuComponent } from './components/card-container-menu/card-container-menu.component';
 import { CardMenuComponent } from './components/card-menu/card-menu.component';
+import { FormsModule } from '@angular/forms';
+import { SharedNotesComponent } from './pages/shared-notes/shared-notes.component';
 
 
 @NgModule({
@@ -30,15 +31,16 @@ import { CardMenuComponent } from './components/card-menu/card-menu.component';
     CardDialogComponent,
     NotesCardEditableComponent,
     CardContainerComponent,
-    CardContainerMenuComponent,
     CardMenuComponent,
+    SharedNotesComponent,
   ],
   imports: [
     CommonModule,
     MaterialModule,
     NotesRoutingModule,
     FlexLayoutModule,
-    AuthModule
+    AuthModule,
+    FormsModule
   ]
 })
 export class NotesModule { }
