@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { NotesCardComponent } from '../notes-card/notes-card.component';
 import { CardDialogComponent } from '../card-dialog/card-dialog.component';
-import { createEmptyNote, Note } from '../../interfaces/notes.interface';
+import { createEmptyNote, Note, CardDialogData } from '../../interfaces/notes.interface';
 
 
 @Component({
@@ -21,9 +21,12 @@ export class AddNoteComponent implements OnInit {
   }
 
   openDialog() {
-    console.log('openDialog() called')
     this.dialog.open(CardDialogComponent, {
-      data: this.emptyNote
+      data: {
+        note: this.emptyNote,
+        newNote: true,
+        shared: false
+      }
     });
   }
 
