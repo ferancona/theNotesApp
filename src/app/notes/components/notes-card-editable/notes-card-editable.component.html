@@ -1,1 +1,33 @@
-<p>notes-card-editable works!</p>
+<!-- <h4>Edit Note</h4>
+<mat-divider></mat-divider> -->
+
+<mat-card>
+  <!-- <mat-card-title>{{ note.title }}</mat-card-title> -->
+  <mat-card-title>
+    <textarea #txtTitle
+      [(ngModel)]="note.title"
+      (input)="keyPressed()"
+      class="textarea-inline-control title"
+      placeholder="Title"
+      maxlength="30"
+      cols="11"
+      spellcheck="false"
+      cdkTextareaAutosize>
+    </textarea>
+  </mat-card-title>
+
+  <mat-divider [inset]="true" ></mat-divider>
+
+  <mat-card-content>
+    <textarea #txtBody
+      [(ngModel)]="note.body"
+      (input)="keyPressed()"
+      class="textarea-inline-control body"
+      placeholder="Take a note..."
+      autofocus
+      spellcheck="false"
+      cdkTextareaAutosize>
+    </textarea>
+  </mat-card-content>
+
+</mat-card>
