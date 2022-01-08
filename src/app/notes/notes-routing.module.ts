@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { NotesComponent } from './pages/notes/notes.component';
 import { SettingsComponent } from './pages/settings/settings.component';
+import { SharedNotesComponent } from './pages/shared-notes/shared-notes.component';
 
 
 const routes: Routes = [
@@ -18,10 +19,10 @@ const routes: Routes = [
         path: 'settings',
         component: SettingsComponent
       },
-      // {
-      //   path: ':id',
-      //   component:
-      // },
+      {
+        path: 'shared',
+        component:SharedNotesComponent
+      },
       {
         path: '**',
         redirectTo: 'home'
