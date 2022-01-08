@@ -26,7 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
     SocialLoginModule,
     AuthModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     {

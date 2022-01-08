@@ -14,7 +14,6 @@ import { AddNoteComponent } from './components/add-note/add-note.component';
 import { CardDialogComponent } from './components/card-dialog/card-dialog.component';
 import { NotesCardEditableComponent } from './components/notes-card-editable/notes-card-editable.component';
 import { AuthModule } from '../auth/auth.module';
-import { CardContainerComponent } from './components/card-container/card-container.component';
 import { CardMenuComponent } from './components/card-menu/card-menu.component';
 import { FormsModule } from '@angular/forms';
 import { SharedNotesComponent } from './pages/shared-notes/shared-notes.component';
@@ -30,7 +29,6 @@ import { SharedNotesComponent } from './pages/shared-notes/shared-notes.componen
     AddNoteComponent,
     CardDialogComponent,
     NotesCardEditableComponent,
-    CardContainerComponent,
     CardMenuComponent,
     SharedNotesComponent,
   ],
