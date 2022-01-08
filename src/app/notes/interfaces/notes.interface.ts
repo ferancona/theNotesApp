@@ -9,7 +9,7 @@ export interface Note {
   type: NoteContentType
 }
 
-export function createEmptyNote() {
+export function createEmptyNote(): Note {
   return {
     id: '',
     ownerId: '',
@@ -32,4 +32,10 @@ export enum NoteContentType {
   UnorderedList = "UnorderedList",
   PlainText =  "PlainText",
   Checkboxes = "Checkboxes"
+}
+
+export interface CardDialogData {
+  note: Note,
+  newNote: boolean,
+  shared: boolean
 }
