@@ -1,6 +1,7 @@
 
 <mat-sidenav-container fullscreen>
 
+
   <mat-sidenav #sidenav>
 
     <mat-toolbar color="primary">
@@ -23,19 +24,25 @@
       </a> -->
       <a routerLink="notes"
         mat-list-item
-        (click)="sidenav.toggle()">
+        (click)="sidenav.toggle(); updateHeading('My Notes')">
         <mat-icon mat-list-icon>label</mat-icon>
         <span>My Notes</span>
       </a>
+      <a routerLink="/notes/shared"
+        mat-list-item
+        (click)="sidenav.toggle(); updateHeading('Shared')">
+        <mat-icon mat-list-icon>group_add</mat-icon>
+        <span>Shared</span>
+      </a>
       <a routerLink="./settings"
         mat-list-item
-        (click)="sidenav.toggle()">
+        (click)="sidenav.toggle(); updateHeading('Settings')">
         <mat-icon mat-list-icon>settings</mat-icon>
         <span>Settings</span>
       </a>
       <a routerLink="/login"
         mat-list-item
-        (click)="sidenav.toggle()">
+        (click)="sidenav.toggle(); updateHeading('TheNotesApp')">
         <mat-icon mat-list-icon>exit_to_app</mat-icon>
         <span>Logout</span>
       </a>
@@ -45,19 +52,21 @@
 
   <mat-toolbar color="primary">
     <button mat-icon-button
-      (click)="sidenav.toggle()"
-    >
+      (click)="sidenav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
 
+    <h2 style="margin-left: 10px;">{{ heading }}</h2>
+
     <span class="spacer"></span>
 
-
-    <button mat-button>
+    <!-- <button mat-button>
       {{user.name}}
-      <!-- <img [src]="user.photoUrl" alt=""> -->
-      <!-- Logout {{socialUser.name}} -->
-    </button>
+    </button> -->
+    <img [src]="user.photoUrl"
+      alt="Profile picture"
+      style="border-radius: 50%; position:relative;  width: 50px; height: auto;">
+      <!-- style="border-radius: 50%; object-fit: scale-down; position:relative; top:20px; background-size: contains; width: min-content;"> -->
     <!-- <div *ngIf="socialAuthService.authState | async as socialUser">
     </div> -->
 
