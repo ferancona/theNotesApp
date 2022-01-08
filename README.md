@@ -14,15 +14,25 @@ Questions to answer for implementation:
 
 # TODO (Priority)
 
+For next meeting:
+
+- Implement API endpoints...
+
+[X] Disable the dialog pop when clicking on one of the card-menu button.
+[X] Component: Editable Card 
+[] CRUD note operations
+
+[] Create a Pipe to display the content of a card.
+
+Requirements
+[] Attach files Dialog (lets you manage the files attached to the note)
+  - Upload, delete... download? 
+[] Share Dialog (lets you manage a list of emails who you share the note with)
+
 Simple
 - Add min width and height to a notes-card component
 
 - How to use user data?
-
-<!-- Do this one after Forms course?? -->
-- Component: Editable card (title and content)
-  - Modify title
-  - Modify text body
 
 - RouteGuards (Sign In)
 
