@@ -1,8 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { NotesVO, createEmptyNote, createEmptyNotesVO } from '../../interfaces/notes.interface';
+import { NotesVO, createEmptyNotesVO } from '../../interfaces/notes.interface';
 import { AttachmentDialogComponent } from '../attachment-dialog/attachment-dialog.component';
-// import {  } from 'stream';
 
 @Component({
   selector: 'app-card-menu',
@@ -16,6 +15,7 @@ export class CardMenuComponent implements OnInit {
   @Output() onDuplicate: EventEmitter<void> = new EventEmitter();
   @Output() onAttach: EventEmitter<void> = new EventEmitter();
   @Output() onShare: EventEmitter<void> = new EventEmitter();
+  @Output() onDuplicateCopy: EventEmitter<void> = new EventEmitter();
 
   @Input() note: NotesVO = createEmptyNotesVO();
   @Input() shared: boolean = false;
@@ -26,7 +26,12 @@ export class CardMenuComponent implements OnInit {
   }
 
   duplicateTrigger() {
-    this.onDuplicate.emit();
+    if (this.shared) {
+      this.onDuplicateCopy.emit();
+    }
+    else {
+      this.onDuplicate.emit();
+    }
   }
 
   openAttachDialog(note: NotesVO) {

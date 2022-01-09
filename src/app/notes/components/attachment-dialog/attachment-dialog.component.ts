@@ -22,9 +22,13 @@ export class AttachmentDialogComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  async loadFile(fileReader: FileReader) {
+    this.rawContent = btoa(fileReader.result!.toString());
+  }
+
   async updateNoteAttachment() {
     const encoded = btoa(this.rawContent)
-    console.log(encoded)
+    // console.log('Encoded!', encoded)
     this.data.note.attachment = encoded;
     this.data.note.attachmentName = this.file?.name || 'Name Unknown';
     this.data.note.attachmentType = this.file?.type || 'Type Unknown';
@@ -45,31 +49,36 @@ export class AttachmentDialogComponent implements OnInit {
     let fileReader = new FileReader();
 
     fileReader.onload = async (e) => {
-      console.log(fileReader.result)
-      console.log(typeof fileReader.result)
-      console.log(btoa('abc'));
-      console.log();
-      // console.log(Buffer.from("SGVsbG8gV29ybGQ=", 'base64').toString('binary'))
-
       if (fileReader.result instanceof String){
         console.log(typeof fileReader.result)
       }
-
       if (fileReader.result !instanceof ArrayBuffer){
-        console.log(typeof fileReader.result?.toString())
+        console.log(typeof fileReader.result?.toString());
         this.rawContent = fileReader.result.toString();
       }
 
+      await this.loadFile(fileReader);
+      this.data.note.attachment = this.rawContent;
       await this.updateNoteAttachment();
       this.notesService.updateNote(this.data.note, true)
-            .subscribe( res => console.log(res) );
-        // .subscribe( () => {
-        //   console.log(this.data.note)
-        //   this.notesService.updateNote(this.data.note, true)
-        //     .subscribe( res => console.log(res) );
-        // })
+          .subscribe( res => console.log(res) );
     }
     fileReader.readAsText(this.file!)
+  }
+
+  async deleteNoteAttachment() {
+    this.data.note.attachment = '';
+    this.data.note.attachmentName = '';
+    this.data.note.attachmentType = '';
+  }
+
+  async deleteAttachment() {
+    await this.deleteNoteAttachment();
+    this.notesService.updateNote(this.data.note, true);
+  }
+
+  downloadFile() {
+
   }
 
 }

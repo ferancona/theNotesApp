@@ -54,6 +54,9 @@ export class NotesCardComponent implements OnInit {
       });
     // Need to refresh screen.
   }
+  duplicateCopy() {
+    this.duplicate();
+  }
 
   attachFile() {
     // TODO: need to get the file input!

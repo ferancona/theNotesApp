@@ -3,8 +3,6 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CardDialogData } from '../../interfaces/notes.interface';
 import { NotesService } from '../../services/notes.service';
 import { AuthService } from '../../../auth/auth.service';
-import { switchMap } from 'rxjs';
-import { SocialUser } from 'angularx-social-login';
 import { EventEmitter } from '@angular/core';
 
 

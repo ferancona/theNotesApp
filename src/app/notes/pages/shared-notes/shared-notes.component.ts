@@ -33,7 +33,11 @@ export class SharedNotesComponent implements OnInit {
     this.authService.getLoggedUser()
       .subscribe( socialUser => {
         this.notesService.getSharedNotes(socialUser.email)
-          .subscribe( res => this.notes = res.dataList );
+          .subscribe( res => {
+            this.notes = res.dataList.filter( note => {
+              return note.authorName !== socialUser.email;
+            });
+          });
       });
   }
 
