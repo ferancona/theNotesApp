@@ -1,5 +1,5 @@
 
-<div fxLayout="row"
+<div fxLayout="row wrap"
   fxLayout.xs="column"
   fxLayoutAlign.xs="center center"
   fxLayoutAlign="center"
@@ -18,7 +18,7 @@
       [note]="note"
       [shared]="true"
       (onEditableClick)="openDialog(note)"
-      >
+      (onRefreshNeeded)="loadNotes()">
     </app-notes-card>
 
   </div>

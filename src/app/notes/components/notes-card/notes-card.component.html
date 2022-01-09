@@ -14,6 +14,7 @@
 
   <mat-card-actions *ngIf="showMenu">
     <app-card-menu
+      [note]="note"
       [shared]="shared"
       (onDuplicate)="duplicate()"
       (onAttach)="attachFile()"

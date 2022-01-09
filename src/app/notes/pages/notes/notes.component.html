@@ -4,11 +4,13 @@
 <div fxLayout="row"
     fxLayoutAlign="center"
     style="padding: 5px;">
-    <app-add-note class="animate__animated animate__fadeIn"></app-add-note>
+    <app-add-note class="animate__animated animate__fadeIn"
+      (onRefreshNeeded)="loadNotes()"
+    ></app-add-note>
 </div>
 
 
-<div fxLayout="row"
+<div fxLayout="row wrap"
   fxLayout.xs="column"
   fxLayoutAlign.xs="center center"
   fxLayoutAlign="center"
@@ -31,7 +33,8 @@
     <app-notes-card
       [note]="note"
       [shared]="false"
-      (onEditableClick)="openDialog(note)">
+      (onEditableClick)="openDialog(note)"
+      (onRefreshNeeded)="loadNotes()">
     </app-notes-card>
 
   </div>

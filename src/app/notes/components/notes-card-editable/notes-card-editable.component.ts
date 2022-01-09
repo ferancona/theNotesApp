@@ -1,6 +1,6 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { debounceTime, Subject } from 'rxjs';
-import { Note, createEmptyNote } from '../../interfaces/notes.interface';
+import { Note, createEmptyNote, NotesVO, createEmptyNotesVO } from '../../interfaces/notes.interface';
 import { NotesService } from '../../services/notes.service';
 
 @Component({
@@ -10,14 +10,7 @@ import { NotesService } from '../../services/notes.service';
 })
 export class NotesCardEditableComponent implements OnInit {
 
-  @Input() note: Note = createEmptyNote();
-
-  // @ViewChild('txtBody') txtBody!: ElementRef<HTMLInputElement>;
-  // @ViewChild('txtBody') set txtBodyRef(ref: ElementRef) {
-  //   if (!!ref){
-  //     ref.nativeElement.focus();
-  //   }
-  // }
+  @Input() note: NotesVO = createEmptyNotesVO();
 
   debouncer: Subject<void> = new Subject();
 
@@ -26,14 +19,19 @@ export class NotesCardEditableComponent implements OnInit {
   ngOnInit(): void {
     // this.txtBodyRef.nativeElement.focus();
     this.debouncer
-      .pipe(debounceTime(500))
+      .pipe(debounceTime(1000))
       .subscribe( () => {
         this.update();
       });
   }
 
   update() {
-    this.notesService.updateNote(this.note.id, this.note);
+    console.log('Before notesService.updateNote( -->', this.note)
+    this.notesService.updateNote(this.note, false)
+    .subscribe(res => {
+      console.log(res)
+      console.log('After notesService.updateNote( -->', this.note)
+      } );
   }
 
   keyPressed() {
@@ -41,3 +39,5 @@ export class NotesCardEditableComponent implements OnInit {
   }
 
 }
+
+"Either fill all the attachment related fields or don't fill any of them.."

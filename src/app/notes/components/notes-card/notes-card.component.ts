@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { Note, NoteContentType, createEmptyNote } from '../../interfaces/notes.interface';
+import { NotesVO, createEmptyNotesVO } from '../../interfaces/notes.interface';
 import { NotesService } from '../../services/notes.service';
 import { AuthService } from '../../../auth/auth.service';
 
@@ -19,8 +19,9 @@ import { AuthService } from '../../../auth/auth.service';
 export class NotesCardComponent implements OnInit {
 
   @Output() onEditableClick: EventEmitter<void> = new EventEmitter();
+  @Output() onRefreshNeeded: EventEmitter<any> = new EventEmitter();
 
-  @Input() note: Note = createEmptyNote();
+  @Input() note: NotesVO = createEmptyNotesVO();
   @Input() showMenu: boolean = true;
   @Input() shared: boolean = false;
 
@@ -35,22 +36,30 @@ export class NotesCardComponent implements OnInit {
     this.authService.getLoggedUser()
       .subscribe( socialUser => {
         const newNote = {
-          id: '',
-          ownerId: socialUser.email,
+          notesId: '',
+          authorName: socialUser.email,
           title: this.note.title,
           body: this.note.body,
-          attachments: this.note.attachments,
-          color: this.note.color,
-          type: this.note.type
+          attachment: this.note.attachment,
+          attachmentName: this.note.attachmentName,
+          attachmentType: this.note.attachmentType,
+          createdDate: this.note.createdDate,
+          modifiedDate: this.note.modifiedDate
         }
-        this.notesService.createNote(newNote);
+        this.notesService.createNote(newNote)
+          .subscribe( res => {
+            console.log(res);
+            this.onRefreshNeeded.emit();
+          });
       });
     // Need to refresh screen.
   }
 
   attachFile() {
     // TODO: need to get the file input!
-    this.notesService.updateNote(this.note.id, this.note);
+    // 1. Extract byteArray of content
+    // 2. Convert to string using btoa("abc") and atob("YWJj")
+    this.notesService.updateNote(this.note, true);
   }
 
   share() {
@@ -60,7 +69,12 @@ export class NotesCardComponent implements OnInit {
   }
 
   delete() {
-    this.notesService.deleteNote(this.note.id);
+    console.log(this.note)
+    this.notesService.deleteNote(this.note.notesId)
+      .subscribe( res => {
+        console.log(res);
+        this.onRefreshNeeded.emit();
+      });
     // Need to refresh screen.
   }
 

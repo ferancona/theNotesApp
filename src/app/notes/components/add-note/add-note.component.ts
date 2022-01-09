@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { NotesCardComponent } from '../notes-card/notes-card.component';
 import { CardDialogComponent } from '../card-dialog/card-dialog.component';
-import { createEmptyNote, Note, CardDialogData } from '../../interfaces/notes.interface';
+import { createEmptyNote, Note, CardDialogData, NotesVO, createEmptyNotesVO } from '../../interfaces/notes.interface';
 
 
 @Component({
@@ -13,7 +13,9 @@ import { createEmptyNote, Note, CardDialogData } from '../../interfaces/notes.in
 })
 export class AddNoteComponent implements OnInit {
 
-  emptyNote: Note = createEmptyNote();
+  @Output() onRefreshNeeded: EventEmitter<any> = new EventEmitter();
+
+  emptyNote: NotesVO = createEmptyNotesVO();
 
   constructor( public dialog: MatDialog ) { }
 
@@ -21,12 +23,16 @@ export class AddNoteComponent implements OnInit {
   }
 
   openDialog() {
-    this.dialog.open(CardDialogComponent, {
+    let dialogRef = this.dialog.open(CardDialogComponent, {
       data: {
         note: this.emptyNote,
         newNote: true,
         shared: false
       }
+    });
+    const sub = dialogRef.componentInstance.onRefreshNeeded
+      .subscribe(() => {
+        this.onRefreshNeeded.emit();
     });
   }
 

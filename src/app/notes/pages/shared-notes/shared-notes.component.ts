@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Note } from '../../interfaces/notes.interface';
+import { Note, NotesVO } from '../../interfaces/notes.interface';
 import { AuthService } from '../../../auth/auth.service';
 import { SocialUser } from 'angularx-social-login';
 import { NotesService } from '../../services/notes.service';
@@ -18,7 +18,7 @@ import { CardDialogComponent } from '../../components/card-dialog/card-dialog.co
 })
 export class SharedNotesComponent implements OnInit {
 
-  notes: Note[] = [];
+  notes: NotesVO[] = [];
 
   constructor( private authService: AuthService,
     private notesService: NotesService,
@@ -33,11 +33,11 @@ export class SharedNotesComponent implements OnInit {
     this.authService.getLoggedUser()
       .subscribe( socialUser => {
         this.notesService.getSharedNotes(socialUser.email)
-          .subscribe( notes => this.notes = notes );
+          .subscribe( res => this.notes = res.dataList );
       });
   }
 
-  openDialog(note: Note) {
+  openDialog(note: NotesVO) {
     this.dialog.open(CardDialogComponent, {
       data: {
         note: note,

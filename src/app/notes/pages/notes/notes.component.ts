@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CardDialogComponent } from '../../components/card-dialog/card-dialog.component';
-import { Note } from '../../interfaces/notes.interface';
+import { Note, NotesVO, GetNotesResponse } from '../../interfaces/notes.interface';
 import { NotesService } from '../../services/notes.service';
 
 import { AuthService } from '../../../auth/auth.service';
 import { SocialUser } from 'angularx-social-login';
-
 
 @Component({
   selector: 'app-notes',
@@ -15,7 +14,7 @@ import { SocialUser } from 'angularx-social-login';
 })
 export class NotesComponent implements OnInit {
 
-  notes: Note[] = [];
+  notes: NotesVO[] = [];
 
   constructor( private notesService: NotesService,
     public dialog: MatDialog,
@@ -29,19 +28,22 @@ export class NotesComponent implements OnInit {
   loadNotes() {
     this.authService.getLoggedUser()
       .subscribe( (socialUser: SocialUser) => {
+        console.log(socialUser)
         this.notesService.getNotes(socialUser.email)
-          .subscribe( notes => this.notes = notes );
+          .subscribe( res => this.notes = res.dataList );
       });
   }
 
-  openDialog(note: Note) {
+  openDialog(note: NotesVO) {
     this.dialog.open(CardDialogComponent, {
       data: {
         note: note,
         newNote: false,
         shared: false
       }
-    })
+    });
   }
 
 }
+
+

@@ -73,6 +73,10 @@
             },
             "development": {
               "browserTarget": "theNotesApp:build:development"
+            },
+            "options": {
+              "browserTarget": "theNotesApp:build",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

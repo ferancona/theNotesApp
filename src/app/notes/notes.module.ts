@@ -17,6 +17,7 @@ import { AuthModule } from '../auth/auth.module';
 import { CardMenuComponent } from './components/card-menu/card-menu.component';
 import { FormsModule } from '@angular/forms';
 import { SharedNotesComponent } from './pages/shared-notes/shared-notes.component';
+import { AttachmentDialogComponent } from './components/attachment-dialog/attachment-dialog.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { SharedNotesComponent } from './pages/shared-notes/shared-notes.componen
     NotesCardEditableComponent,
     CardMenuComponent,
     SharedNotesComponent,
+    AttachmentDialogComponent,
   ],
   imports: [
     CommonModule,

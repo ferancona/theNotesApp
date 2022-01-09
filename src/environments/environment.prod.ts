@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseUrl: 'http://somwhereInAWS:8000'
+  baseUrl: 'http://notesapp.us-east-1.elasticbeanstalk.com'
 };

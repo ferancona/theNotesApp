@@ -35,8 +35,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.socialAuthService.authState
-    //   .subscribe( socialUser => this.user = socialUser );
     // console.log(this.user)
     this.authService.getLoggedUser()
       .subscribe( socialUser => this.user = socialUser );
