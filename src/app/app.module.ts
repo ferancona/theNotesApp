@@ -36,7 +36,8 @@ import { HttpClientModule } from '@angular/common/http';
         providers: [
           {
             id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider('80298142712-sfd3vlkoee04rnudbn0qrtb2910eh33b.apps.googleusercontent.com') // your client id
+            // provider: new GoogleLoginProvider('80298142712-sfd3vlkoee04rnudbn0qrtb2910eh33b.apps.googleusercontent.com') // your client id
+            provider: new GoogleLoginProvider('80298142712-j9bg801umnjl77gdq7no3qpgkg86qvgh.apps.googleusercontent.com') // your client id
           }
         ]
       }

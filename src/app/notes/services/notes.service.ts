@@ -61,11 +61,6 @@ export class NotesService {
     // return this.http.get<NotesVO[]>(`${this.baseUrl}/notes?ownerId=2`);
   }
 
-  fetchNotes(userId: string) {
-    // Need to get notes by user.
-    //
-  }
-
   updateNote(note: NotesVO, hasAttachment: boolean): Observable<UpdateNotesResponse> {
     // console.log(`updating note (ID: ${note.notesId})`);
     console.log(`updating note: ${JSON.stringify(note)}`);

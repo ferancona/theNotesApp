@@ -5,8 +5,9 @@
 export const environment = {
   production: false,
   // baseUrl: 'http://localhost:3000'
-  baseUrl: 'http://localhost:8080/notes-app'
+  // baseUrl: 'http://localhost:8080/notes-app'
   // baseUrl: 'http://notesapp.us-east-1.elasticbeanstalk.com'
+  baseUrl: 'http://notesapps-env.eba-mrybc5wz.us-east-1.elasticbeanstalk.com'
 };
 
 /*

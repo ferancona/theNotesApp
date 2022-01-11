@@ -16,20 +16,10 @@
   fxLayoutAlign="center"
   fxLayoutGap="10px"
   >
-  <!-- fxLayoutGap="10px"  -->
-
   <div fxFlex="40"
     *ngFor="let note of notes"
     class="animate__animated animate__fadeIn">
-  <!-- <div fxFlex="20"
-    fxFlex.lg="15"
-    fxFlex.sm="30"
-    *ngFor="let note of notes"> -->
 
-    <!-- <app-card-container
-      [note]="note"
-      (click)="openDialog(note)">
-    </app-card-container> -->
     <app-notes-card
       [note]="note"
       [shared]="false"
